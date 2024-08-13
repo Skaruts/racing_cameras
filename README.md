@@ -4,7 +4,7 @@ This plugin provides a handful of handy cameras for racing games. It's mostly in
 
 The cameras should be easy to use with minimal or no setup required. The plugin creates an autoload that manages the cameras. Most of it is done automatically. More information is available in the in-editor documentation.
 
-The available cameras are:
+## The available cameras are:
 - **RacingChaseCamera** - the regular racing game camera that chases the vehicle and spins around to face the direction of movement
 - **RacingCockpitCamera** - the car interior camera. Can be controlled with the mouse to look around freely
 - **RacingOrbitCamera** - can be controlled with the mouse to orbit around the car
