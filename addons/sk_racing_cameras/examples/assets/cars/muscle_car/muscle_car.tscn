@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3p100x7lgwng"]
+
+[ext_resource type="PackedScene" uid="uid://cxhcoihrvm6eu" path="res://addons/sk_racing_cameras/examples/assets/cars/muscle_car/muscle_car_no_cams.tscn" id="1_ermtb"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/cockpit_cam.gd" id="2_oyr85"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/orbit_cam.gd" id="3_xtdmi"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/chase_cam.gd" id="4_vrl7e"]
+[ext_resource type="PackedScene" uid="uid://cvejlhg1wej8" path="res://addons/sk_racing_cameras/examples/assets/cars/muscle_car/car_cameras.tscn" id="5_sdxuo"]
+
+[node name="muscle_car" instance=ExtResource("1_ermtb")]
+
+[node name="RacingOrbitCamera" type="Camera3D" parent="." index="3"]
+script = ExtResource("3_xtdmi")
+
+[node name="RacingChaseCamera" type="Camera3D" parent="." index="4"]
+script = ExtResource("4_vrl7e")
+
+[node name="RacingCockpitCamera" type="Camera3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386995, 1.13036, 0.321016)
+script = ExtResource("2_oyr85")
+
+[node name="RacingCarCamera" parent="." index="6" instance=ExtResource("5_sdxuo")]
+
+[node name="hood_view" parent="RacingCarCamera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01179, -0.673667)
+
+[node name="rear_view" parent="RacingCarCamera" index="1"]
+transform = Transform3D(-1, -2.11465e-08, 8.48267e-08, 0, 0.970304, 0.241888, -8.74228e-08, 0.241888, -0.970304, 0, 1.22529, 1.23627)
+
+[node name="bumper_view" parent="RacingCarCamera" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.471077, -2.59582)
+
+[node name="left_view" parent="RacingCarCamera" index="3"]
+transform = Transform3D(-4.39059e-08, -0.0666391, -0.997777, 2.91288e-09, 0.997777, -0.0666391, 1, -5.83226e-09, -4.36142e-08, -3.391, 0.60862, -0.0276432)
+
+[node name="right_view" parent="RacingCarCamera" index="4"]
+transform = Transform3D(-4.36143e-08, 0.0666391, 0.997777, 2.91288e-09, 0.997777, -0.0666391, -1, -1.33227e-14, -4.37115e-08, 3.39061, 0.60862, -0.0276432)
+
+[editable path="RacingCarCamera"]

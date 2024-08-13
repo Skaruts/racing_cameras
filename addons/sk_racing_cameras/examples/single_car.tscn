@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddng4imjmc6eh"]
+
+[ext_resource type="PackedScene" uid="uid://bme4c1oujo4tj" path="res://addons/sk_racing_cameras/examples/assets/tracks/test_track_no_cams.tscn" id="2_up0qe"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/track_cam.gd" id="3_at4uc"]
+[ext_resource type="PackedScene" uid="uid://cxhcoihrvm6eu" path="res://addons/sk_racing_cameras/examples/assets/cars/muscle_car/muscle_car_no_cams.tscn" id="3_sp55k"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/orbit_cam.gd" id="4_55n42"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/cockpit_cam.gd" id="5_8cwqv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_823no"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1jel1"]
+sky_material = SubResource("ProceduralSkyMaterial_823no")
+
+[sub_resource type="Environment" id="Environment_36a3n"]
+background_mode = 2
+sky = SubResource("Sky_1jel1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_rmotv"]
+font_size = 20
+font_color = Color(0.87, 0.84564, 0.8004, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="single_car" type="Node3D"]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180326, 5.50598, -5.09942)
+modulate = Color(1, 0.654902, 0.231373, 1)
+text = "This scene has only a single car. Cameras should work by simply placing them in the scene tree, under the car or the race track. "
+font_size = 64
+outline_size = 32
+autowrap_mode = 2
+width = 750.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_36a3n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="test_track_no_cams" parent="." instance=ExtResource("2_up0qe")]
+
+[node name="RacingTrackCamera" type="Camera3D" parent="test_track_no_cams"]
+script = ExtResource("3_at4uc")
+
+[node name="Camera3D" type="Camera3D" parent="test_track_no_cams/RacingTrackCamera"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.430741, 2.8194, -9.18432)
+
+[node name="Camera3D2" type="Camera3D" parent="test_track_no_cams/RacingTrackCamera"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.127523, 2.8194, 27.3529)
+
+[node name="cars" type="Node3D" parent="."]
+
+[node name="muscle_car_nc" parent="cars" instance=ExtResource("3_sp55k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="RacingOrbitCamera" type="Camera3D" parent="cars/muscle_car_nc"]
+script = ExtResource("4_55n42")
+
+[node name="RacingCockpitCamera" type="Camera3D" parent="cars/muscle_car_nc"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415779, 1.10073, 0.220638)
+script = ExtResource("5_8cwqv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "WASD/Arrows
+Enter
+C"
+label_settings = SubResource("LabelSettings_rmotv")
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Drive
+Recover car
+Switch Camera"
+label_settings = SubResource("LabelSettings_rmotv")

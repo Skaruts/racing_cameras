@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvejlhg1wej8"]
+
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/car_cam.gd" id="1_uoapj"]
+
+[node name="RacingCarCamera" type="Camera3D"]
+script = ExtResource("1_uoapj")
+
+[node name="hood_view" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735357, -0.646024)
+
+[node name="rear_view" type="Camera3D" parent="."]
+transform = Transform3D(-1, -2.11465e-08, 8.48267e-08, 0, 0.970304, 0.241888, -8.74228e-08, 0.241888, -0.970304, 0, 0.713889, 1.10496)
+
+[node name="bumper_view" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194642, -2.56818)
+
+[node name="left_view" type="Camera3D" parent="."]
+transform = Transform3D(-4.39059e-08, -0.0666391, -0.997777, 2.91288e-09, 0.997777, -0.0666391, 1, -5.83226e-09, -4.36142e-08, -3.391, 0.332185, 0)
+
+[node name="right_view" type="Camera3D" parent="."]
+transform = Transform3D(-4.36143e-08, 0.0666391, 0.997777, 2.91288e-09, 0.997777, -0.0666391, -1, -1.33227e-14, -4.37115e-08, 3.39061, 0.332185, 0)

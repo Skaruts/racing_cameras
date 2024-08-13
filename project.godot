@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Racing Cameras Plugin"
+config/tags=PackedStringArray("plugin", "racing")
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+cameraman="*res://addons/sk_racing_cameras/src/cameraman.gd"
+
+[debug]
+
+gdscript/warnings/exclude_addons=false
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/untyped_declaration=2
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/sk_racing_cameras/plugin.cfg")

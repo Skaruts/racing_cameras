@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="RacingCamera3D_2.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs15">
+    <inkscape:path-effect
+       effect="perspective-envelope"
+       up_left_point="5.0226585,2.9877299"
+       up_right_point="17.112937,2.9877299"
+       down_left_point="3.1121046,12.98773"
+       down_right_point="15.202384,12.98773"
+       id="path-effect8189"
+       is_visible="true"
+       lpeversion="1"
+       deform_type="perspective"
+       horizontal_mirror="false"
+       vertical_mirror="false"
+       overflow_perspective="false" />
+    <linearGradient
+       id="linearGradient3582"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3580" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3438"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3436" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="true"
+     inkscape:zoom="22.627417"
+     inkscape:cx="4.1984465"
+     inkscape:cy="15.976194"
+     inkscape:window-width="1920"
+     inkscape:window-height="1053"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg11">
+    <inkscape:grid
+       type="xygrid"
+       id="grid351" />
+  </sodipodi:namedview>
+  <path
+     fill="#fc7f7f"
+     d="M 13.356821,2.9877405 C 11.903964,2.9837835 10.273336,4.0857496 9.6211463,5.5122831 8.7724149,4.3393794 6.5940729,4.6366971 5.1262287,6.1257739 3.6583845,7.6148506 3.6448875,9.5410772 5.0983916,10.10046 l -0.7544873,1.97818 c -0.191494,0.502077 0.067077,0.90909 0.5775363,0.90909 h 5.5456044 c -0.5104577,0 1.079505,-0.407013 1.271,-0.90909 l 0.34673,-0.90909 2.079341,1.81818 L 16.244503,7.5331901 12.778239,9.35137 13.391952,7.7422807 C 15.915671,6.072279 15.892921,2.9933619 13.356821,2.9877405 Z"
+     id="path9"
+     style="stroke-width:0.918346"
+     sodipodi:nodetypes="ccscsssscccccc"
+     inkscape:path-effect="#path-effect8189"
+     inkscape:original-d="M 12.474458,2.9877406 C 11.015453,2.9837836 9.5900943,4.0857497 9.2090435,5.5122833 8.1322435,4.3393796 6.0028369,4.6366973 4.8150998,6.1257741 3.6273627,7.6148508 3.9831966,9.5410774 5.5493611,10.10046 l -0.3779419,1.97818 c -0.095924,0.502077 0.2416569,0.90909 0.754009,0.90909 11.2429718,0 6.5081918,0 5.5661728,0 -0.512351,0 1.005458,-0.407013 1.101383,-0.90909 l 0.173686,-0.90909 2.435714,1.81818 1.042119,-5.4545397 -3.130459,1.8181799 0.307424,-1.6090893 C 15.634302,6.0722792 15.021042,2.993362 12.474458,2.9877406 Z" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 3,13 Z"
+     id="path1373" />
+  <path
+     style="fill:#fc7f7f;fill-opacity:1;stroke-width:0.03125"
+     d="m 10.555052,14.993523 c 0.03887,-0.0075 0.09512,-0.0072 0.125,6.31e-4 0.02988,0.0078 -0.0019,0.01394 -0.07068,0.01359 -0.06875,-3.47e-4 -0.09319,-0.0067 -0.05432,-0.01422 z"
+     id="path3544" />
+  <path
+     style="fill:#fc7f7f;fill-opacity:1;fill-rule:evenodd;stroke-width:1.41421"
+     d="m 1,11 v 1 H 3 V 11 H 1"
+     id="path3596" />
+  <path
+     style="fill:#fc7f7f;fill-opacity:1;fill-rule:evenodd;stroke-width:2.5"
+     d="M 1.75,3 V 4 H 8 V 3 H 1.75"
+     id="path3600" />
+  <path
+     style="fill:#fc7f7f;fill-opacity:1;fill-rule:evenodd;stroke-width:1.73205"
+     d="m 0.01674975,6.9877301 v 1 H 3.0167497 v -1 H 0.01674975"
+     id="path3602" />
+</svg>

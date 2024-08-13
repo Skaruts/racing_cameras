@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr16tdrir7ajb"]
+
+[ext_resource type="PackedScene" uid="uid://baaeis7lv5fh8" path="res://addons/sk_racing_cameras/examples/assets/cars/mazda/mazda_no_cams.tscn" id="1_56sba"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/cockpit_cam.gd" id="2_5qc31"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/orbit_cam.gd" id="3_plfvv"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/chase_cam.gd" id="4_t05lv"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/car_cam.gd" id="5_tsudu"]
+
+[node name="mazda" instance=ExtResource("1_56sba")]
+
+[node name="RacingCockpitCamera" type="Camera3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.381517, 0.839238, 0.37842)
+script = ExtResource("2_5qc31")
+
+[node name="RacingChaseCamera" type="Camera3D" parent="." index="4"]
+script = ExtResource("4_t05lv")
+
+[node name="RacingOrbitCamera" type="Camera3D" parent="." index="5"]
+script = ExtResource("3_plfvv")
+
+[node name="RacingCarCamera" type="Camera3D" parent="." index="6"]
+script = ExtResource("5_tsudu")
+
+[node name="hood_view" type="Camera3D" parent="RacingCarCamera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83038, -0.562363)
+
+[node name="rear_view" type="Camera3D" parent="RacingCarCamera" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.899219, 0.890009)
+
+[node name="bumper_view" type="Camera3D" parent="RacingCarCamera" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265737, -1.98297)
+
+[node name="left_view" type="Camera3D" parent="RacingCarCamera" index="3"]
+transform = Transform3D(-4.39059e-08, -0.0666391, -0.997777, 2.91288e-09, 0.997777, -0.0666391, 1, -5.83226e-09, -4.36142e-08, -2.22, 0.61, 0)
+
+[node name="right_view" type="Camera3D" parent="RacingCarCamera" index="4"]
+transform = Transform3D(-4.36143e-08, 0.0666391, 0.997777, 2.91288e-09, 0.997777, -0.0666391, -1, -1.33227e-14, -4.37115e-08, 2.22026, 0.609747, 0)

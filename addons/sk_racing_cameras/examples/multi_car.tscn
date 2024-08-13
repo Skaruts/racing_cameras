@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://b03e0wl3f3080"]
+
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/examples/multi_car.gd" id="1_tfeea"]
+[ext_resource type="PackedScene" uid="uid://c3w1tnok1rw1q" path="res://addons/sk_racing_cameras/examples/assets/tracks/test_track.tscn" id="2_n2k2q"]
+[ext_resource type="PackedScene" uid="uid://b3p100x7lgwng" path="res://addons/sk_racing_cameras/examples/assets/cars/muscle_car/muscle_car.tscn" id="3_ggfqi"]
+[ext_resource type="PackedScene" uid="uid://cpmedahn3pc1b" path="res://addons/sk_racing_cameras/examples/assets/cars/skyline/skyline.tscn" id="4_gdfxs"]
+[ext_resource type="PackedScene" uid="uid://cr16tdrir7ajb" path="res://addons/sk_racing_cameras/examples/assets/cars/mazda/mazda.tscn" id="5_qqsrc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_823no"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1jel1"]
+sky_material = SubResource("ProceduralSkyMaterial_823no")
+
+[sub_resource type="Environment" id="Environment_36a3n"]
+background_mode = 2
+sky = SubResource("Sky_1jel1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_rmotv"]
+font_size = 20
+font_color = Color(0.87, 0.84564, 0.8004, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="multi_car" type="Node3D"]
+script = ExtResource("1_tfeea")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180326, 4.27868, -5.09942)
+modulate = Color(1, 0.654902, 0.231373, 1)
+text = "This scene includes all the cameras in several cars, and in the race track."
+font_size = 64
+outline_size = 32
+autowrap_mode = 2
+width = 750.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_36a3n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="test_track" parent="." instance=ExtResource("2_n2k2q")]
+
+[node name="cars" type="Node3D" parent="."]
+
+[node name="muscle_car" parent="cars" instance=ExtResource("3_ggfqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.890797, 1.48072, 0)
+angular_damp = 0.5
+
+[node name="skyline" parent="cars" instance=ExtResource("4_gdfxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69602, 1.17726, 0)
+angular_damp = 0.5
+spring_damper = 2000.0
+
+[node name="mazda" parent="cars" instance=ExtResource("5_qqsrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39191, 1.15914, 0)
+angular_damp = 0.5
+suspension_rest_dist = 0.425
+spring_strength = 40000.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "WASD/Arrows
+Enter
+Tab
+C
+V"
+label_settings = SubResource("LabelSettings_rmotv")
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Drive
+Recover car
+Next Car
+Switch Camera
+Switch Camera Position"
+label_settings = SubResource("LabelSettings_rmotv")
