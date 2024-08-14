@@ -1,7 +1,8 @@
 @tool
-@icon("../../icons/racing_cam.svg")
+@icon("res://addons/sk_racing_cameras/icons/racing_cam.svg")
 class_name RacingCamera
 extends Camera3D # must actually be a camera, so that they can be previewed in the editor
+
 
 ## Do not use. This is the base class for all racing cameras, and does nothing on its own.
 ##
@@ -41,9 +42,11 @@ extends Camera3D # must actually be a camera, so that they can be previewed in t
 const _shared := preload("res://addons/sk_racing_cameras/src/shared.gd")
 
 
+@warning_ignore("unused_private_class_variable")
 var _type:StringName = "RacingCamera"  # workaround for 'get_class' not accounting for custom classes
 var _active: bool = true
 
+@warning_ignore("unused_private_class_variable")
 var _cam:Camera3D
 
 var _car_base: Node3D
