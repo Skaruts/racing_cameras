@@ -150,6 +150,7 @@ func switch_position(index:int, emit:=false, force_change:=false) -> void:
 #		private
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
 func _internal_switch_position(idx:int, emit:=false) -> void:
+	if _camera_positions.size() == 0: return
 	_curr_position = idx
 	_cam.global_position = _camera_positions[idx].pos
 
