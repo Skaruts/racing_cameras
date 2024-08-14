@@ -94,7 +94,8 @@ func _on_process(delta: float) -> void:
 	if auto_switch and _should_change_position and _pos_change_timer <= 0:
 		_change_camera(delta)
 
-	_cam.look_at(_target.global_position, Vector3.UP)
+	if Vector3.UP != _cam.global_position.direction_to(_target.global_position):
+		_cam.look_at(_target.global_position, Vector3.UP)
 
 
 func _on_unhandled_input(event: InputEvent) -> void:
