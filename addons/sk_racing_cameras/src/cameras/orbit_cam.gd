@@ -57,7 +57,7 @@ func _on_ready() -> void:
 	_pivot2.rotation.x = deg_to_rad(-25)
 
 
-func _on_process(delta: float) -> void:
+func _on_process(_delta: float) -> void:
 	if stabilized or _car_base != _car_body:
 		global_position = _car_body.global_position
 

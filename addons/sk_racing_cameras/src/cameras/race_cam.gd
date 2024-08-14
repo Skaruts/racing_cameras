@@ -112,8 +112,8 @@ func _process(delta: float) -> void:
 # and also to keep the documentation simpler
 func _on_enter_tree() -> void:                       assert(false, "to override")
 func _on_ready() -> void:                            assert(false, "to override")
-func _on_unhandled_input(event: InputEvent) -> void: assert(false, "to override")
-func _on_process(delta: float) -> void:              assert(false, "to override")
+func _on_unhandled_input(_event: InputEvent) -> void: assert(false, "to override")
+func _on_process(_delta: float) -> void:              assert(false, "to override")
 func _on_set_active() -> void:                       assert(false, "to override")
 func _on_set_car() -> void:                          pass
 

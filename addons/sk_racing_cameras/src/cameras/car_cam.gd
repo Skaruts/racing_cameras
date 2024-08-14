@@ -71,7 +71,7 @@ func _on_unhandled_input(event: InputEvent) -> void:
 
 
 
-func _on_process(delta: float) -> void:
+func _on_process(_delta: float) -> void:
 	# if the parent isn't the car's physics body, then this camera will need to catch up to it
 	if _car_base != _car_body:
 		global_position = _car_body.global_position

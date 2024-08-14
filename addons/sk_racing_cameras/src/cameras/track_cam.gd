@@ -164,7 +164,7 @@ func _init_positions() -> void:
 		c.free()
 
 
-func _change_camera(delta:float) -> void:
+func _change_camera(_delta:float) -> void:
 	_pos_change_timer = _pos_change_cooldown
 	_should_change_position = false
 	_prev_closest_pos_idx = _closest_pos_idx
