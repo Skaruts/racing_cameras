@@ -1,5 +1,7 @@
+@tool
 class_name RacingTrackCamera
 extends RacingCamera
+
 
 ## A race-track camera, that automatically changes between the available
 ## positions to follow the car.
