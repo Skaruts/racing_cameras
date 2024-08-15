@@ -250,16 +250,16 @@ func _calc_target_rotation() -> float:
 		#logs.print(car_rot, steering_dir)
 
 	if _new_heading < 0:  # reverse
-		if   steering_dir < 0: rot =  180
-		elif steering_dir > 0: rot = -180
+		if   steering_dir > 0: rot =  180
+		elif steering_dir < 0: rot = -180
 		elif _piv_diff > 0:    rot =  180
 		elif _piv_diff < 0:    rot = -180
 	else:                 # forward
 		rot = 0
-		if steering_dir < 0:
+		if steering_dir > 0:
 			if _pivot.rotation_degrees.y < 0:
 				_pivot.rotation_degrees.y = 360 + _pivot.rotation_degrees.y
-		elif steering_dir > 0:
+		elif steering_dir < 0:
 			if _pivot.rotation_degrees.y > 0:
 				_pivot.rotation_degrees.y = -360 + _pivot.rotation_degrees.y
 		elif _piv_diff > 0:
