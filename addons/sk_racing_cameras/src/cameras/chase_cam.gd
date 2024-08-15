@@ -245,6 +245,10 @@ func _calc_target_rotation() -> float:
 		steering_dir = sign(dotp) if abs(dotp) > 0.001 else 0
 		steering_dir *= _new_heading # correct for this being inverted when reversing
 
+		#var car_rot:float = -(last_rot - _car_body.global_rotation.y)  * _curr_heading
+		#var steering_dir: int = 0 if abs(car_rot) < 0.01 else sign(car_rot)
+		#logs.print(car_rot, steering_dir)
+
 	if _new_heading < 0:  # reverse
 		if   steering_dir < 0: rot =  180
 		elif steering_dir > 0: rot = -180
