@@ -253,7 +253,7 @@ func _calc_target_rotation() -> float:
 	#var steering_dir = sign(_car_body.linear_velocity.normalized().dot(_car_body.global_basis.x))
 	#steering_dir *= _curr_heading # correct for this being inverted when reversing
 
-	if _curr_heading < 0:  # reverse
+	if _new_heading < 0:  # reverse
 		if   steering_dir < 0: rot =  180
 		elif steering_dir > 0: rot = -180
 		elif _piv_diff > 0:    rot =  180
