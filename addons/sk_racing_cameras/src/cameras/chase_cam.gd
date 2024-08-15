@@ -210,7 +210,7 @@ func switch_mode(index:ChaseMode, emit:=true, force_change:=false) -> void:
 
 
 
-func _do_rotating_camera(delta: float) -> void:
+func _do_rotating_camera(_delta: float) -> void:
 	if not _car_body: return
 
 	# adjust root
