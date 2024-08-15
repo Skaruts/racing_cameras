@@ -210,23 +210,26 @@ func switch_mode(index:ChaseMode, emit:=true, force_change:=false) -> void:
 
 
 
-func _do_rotating_camera(_delta: float) -> void:
+func _do_rotating_camera(delta: float) -> void:
 	if not _car_body: return
+
 	# adjust root
 	global_position = global_position.lerp(_car_body.global_position, _lerp_pos_weight)
 	global_rotation.y = lerp_angle(global_rotation.y, _car_body.global_rotation.y, _lerp_look_weight)
 
 	# adjust _pivot
-	var car_rot := rad_to_deg(_car_body.global_basis.get_euler().y)
+	var car_rot:float = _car_body.global_rotation_degrees.y
 
 	if _curr_mode != ChaseMode.FIXED:
-		_piv_diff = wrapf(rad_to_deg(_pivot.global_basis.get_euler().y) - car_rot, -180, 180)
+		_piv_diff = wrapf(_pivot.global_rotation_degrees.y - car_rot, -180, 180)
 		_new_heading = sign(_car_body.linear_velocity.normalized().dot(-_car_body.global_basis.z))
 
 		# this means the _pivot will need to change direction of rotation
-		if _new_heading != 0 and _new_heading != _curr_heading and _car_base.get_throttle_input() == _new_heading:
-			_curr_heading = _new_heading
-			_target_rot = _calc_target_rotation()
+		if _new_heading != 0 and _new_heading != _curr_heading:
+			# prevent turning the camera when the car is going back and forth near zero movement
+			if _car_body.linear_velocity.length() > 0.25:
+				_target_rot = _calc_target_rotation()
+				_curr_heading = _new_heading
 	else:
 		_target_rot = 0
 
@@ -234,7 +237,11 @@ func _do_rotating_camera(_delta: float) -> void:
 
 	# adjust camera
 	var offset := Vector3(0, origin_offset, 0)
-	_cam.look_at(_car_body.global_position + offset, Vector3.UP)
+	var look_target := _car_body.global_position + offset
+
+	# prevent looking at if direction is aligned with up vector
+	if Vector3.UP != _cam.global_position.direction_to(look_target):
+		_cam.look_at(look_target, Vector3.UP)
 
 
 func _calc_target_rotation() -> float:
@@ -249,8 +256,8 @@ func _calc_target_rotation() -> float:
 	if _curr_heading < 0:  # reverse
 		if   steering_dir < 0: rot =  180
 		elif steering_dir > 0: rot = -180
-		elif _piv_diff > 0:     rot =  180
-		elif _piv_diff < 0:     rot = -180
+		elif _piv_diff > 0:    rot =  180
+		elif _piv_diff < 0:    rot = -180
 	else:                 # forward
 		rot = 0
 		if steering_dir < 0:

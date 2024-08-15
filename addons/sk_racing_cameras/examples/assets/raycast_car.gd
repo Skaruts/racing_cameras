@@ -32,7 +32,7 @@ func get_steering_direction() -> float:
 
 @export_category("Steering")
 @export var wheel_grip_curve:Curve
-@export var steering_angle:float = 30
+@export var steering_angle:float = 40
 @export var steer_speed:float = 0.1
 @export var unsteer_speed:float = 0.3
 
