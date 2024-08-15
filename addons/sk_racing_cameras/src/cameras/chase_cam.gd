@@ -62,7 +62,7 @@ var _curr_mode:ChaseMode
 @export var origin_offset      : float = 1      ## The vertical offset from the car's origin that the camera will look at.
 @export var cam_speed          : float = 0.2    ## How fast the camera moves toward or away from the car, when turning the mouse wheel.
 @export var min_height         : float = 1      ## The minimum camera height.
-@export var max_height         : float = 3      ## The maximum camera height.
+@export var max_height         : float = 4      ## The maximum camera height.
 @export var min_distance       : float = 2.5    ## The minimum distance to the car.
 @export var max_distance       : float = 10     ## The maximum distance to the car.
 @export var invert_mouse_wheel : bool = false   ## Invert mouse wheel movement.
