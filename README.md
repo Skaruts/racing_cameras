@@ -27,7 +27,7 @@ All the nodes are documented, so you can refer to the in-editor documentation if
 
 ###### Note: Godot has an [unfortunate issue](https://github.com/godotengine/godot/issues/72406) with in-editor documentation going missing after restarting the editor. A (crappy) workaround is to edit each affected script (just add a random space to it) and save it, and its documentation should then be listed and it should persist (at least until you delete the `.godot` folder; then you'll need this workaround again).
 
-This plugin will autoload a camera manager singleton that should automatically manage all the cameras that exist in the scene tree, so they should be easy to use with minimal or no setup required. The autoload should be accessible as `cameraman`.
+This plugin will autoload a camera manager singleton that should automatically manage all the racing-cameras that exist in the scene tree, so they should be easy to use with minimal or no setup required. The autoload should be accessible as `cameraman`.
 
 The camera manager also allows to easily switch between the available cameras using the `C` key, by default, or user defined input actions if they exist (see [Input Actions](#input-actions) below). The same is true for cameras that support multiple positions or modes, using the `V` key by default.
 
