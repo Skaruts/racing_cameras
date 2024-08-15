@@ -8,9 +8,6 @@ extends RigidBody3D
 func is_active() -> bool:
 	return _active
 
-func get_throttle_input() -> float:
-	return accel_input
-
 func get_steering_direction() -> float:
 	return -sign(steering_input)
 
