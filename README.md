@@ -6,6 +6,10 @@ The plugin includes a couple of example scenes, showing the cameras in action, w
 
 ###### Note: this is a work in progress, and some things may change between versions.
 
+Quick video demonstration:
+
+[![[Godot 4] Racing Cameras Plugin](https://github.com/user-attachments/assets/5ee1d305-621e-47df-b54c-bc49cbd0f094)](http://www.youtube.com/watch?v=tU3scSdb8z4 "[Godot 4] Racing Cameras Plugin")
+
 
 ## The available cameras are:
 - **RacingChaseCamera** - the regular racing game camera that chases the vehicle and rotates around it to face the direction of movement. Can be moved closer and away from the vehicle with the mouse wheel.
