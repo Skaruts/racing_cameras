@@ -92,25 +92,21 @@ You can use the `V` key (or the input actions) to switch between several rigidit
 
 This camera also comes with some settings that are tweakable in the inspector.
 
-For this camera to work properly, currently it needs to know about the input state of your vehicle, so it requires that the vehicle defines two methods: the `get_throttle_input` which returns the acceleration input, and `get_steering_direction` which returns the steering input.
+Unlike other cameras, this camera needs to know the state of the steering input of your vehicle. This isn't mandatory, as the camera will work either way, but without knowing the input state, there will be some minor behavior inconsistencies. To fix this, the vehicle script should define the method `get_steering_input` which should return the raw steering input. The camera will throw a warning if this method doesn't exist.
 
 For example:
 
 ```gdscript
 # vehicle script
 
-func get_throttle_input() -> float:
-    return accel_input
-
-func get_steering_direction() -> float:
+func get_steering_input() -> float:
      return steering_input
 
 func _process(delta: float) -> void:
-    accel_input    = Input.get_axis("brake", "accelerate")
     steering_input = Input.get_axis("turn_right", "turn_left")
 ```
 
-
+Depending on the implementation, you may have to return an inverted steering input. The goal is to have the camera rotate around the opposite side to which the vehicle wheels are turning. E.g., if the wheels are turning left, the camera should rotate around the right side. This results in quicker visibility to where the vehicle is going.
 
 
 - ### RacingOrbitCamera
