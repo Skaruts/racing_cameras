@@ -22,26 +22,25 @@ extends RacingCamera
 ## either by setting [member RacingCamera.follow_car] in the inspector, or using
 ## [method RacingCamera.set_car] through code.
 ##[br][br]
-## In order for this camera to work properly, it requires knowing some
-## information about the car, such as the direction of movement and the
-## direction that the car is turning to. Currently this means that the car node
-## should define the methods [code]get_throttle_input[/code] and
+## In order for this camera to work properly, it needs to know state of the
+## steering input (it will still work without this, but with some minor
+## inconsistencies). This means that the car node should define the method
 ## [code]get_steering_input[/code].
 ## [codeblock]
-## func get_throttle_input() -> float:
-##     return throttle_input
-##
 ## func get_steering_input() -> float:
-##     return steer_dir
+##     return steer_input
+##
+## func _process(delta: float) -> void:
+##    steer_input = Input.get_axis("turn_right", "turn_left")
 ## [/codeblock]
-## In both cases the return value should be a [param float] between [code]-1[/code]
+## The return value should be a [param float] between [code]-1[/code]
 ## and [code]1[/code], and the steering direction may have be corrected/negated
 ## to point in the right direction, depending on the implementation.
 ##[br][br]
-## The intended result is that the camera always spins around to the opposite
-## side that the car is turning to, such that it will more quickly provide
+## The intended result is that the camera always rotates around the opposite
+## side that the wheels are turning to, such that it will more quickly provide
 ## visibility in that direction (see the plugin examples). E.g., if the car is
-## turning left, the camera will spin to its right side, and vice-versa.
+## turning left, the camera will rotate by the right side, and vice-versa.
 
 
 ## Emitted whenever this camera changes mode.
