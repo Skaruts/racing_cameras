@@ -26,12 +26,12 @@ extends RacingCamera
 ## information about the car, such as the direction of movement and the
 ## direction that the car is turning to. Currently this means that the car node
 ## should define the methods [code]get_throttle_input[/code] and
-## [code]get_steering_direction[/code].
+## [code]get_steering_input[/code].
 ## [codeblock]
 ## func get_throttle_input() -> float:
 ##     return throttle_input
 ##
-## func get_steering_direction() -> float:
+## func get_steering_input() -> float:
 ##     return steer_dir
 ## [/codeblock]
 ## In both cases the return value should be a [param float] between [code]-1[/code]
@@ -119,8 +119,8 @@ func _on_ready() -> void:
 
 	switch_mode(chase_mode, false, true)
 
-	if not _car_base.has_method("get_steering_direction"):
-		push_warning("vehicle script has no method 'get_steering_direction' (this will cause some minor inconsistencies in the camera's behavior).")
+	if not _car_base.has_method("get_steering_input"):
+		push_warning("vehicle script has no method 'get_steering_input' (this will cause some minor inconsistencies in the camera's behavior).")
 
 
 func _on_process(delta: float) -> void:
@@ -238,8 +238,8 @@ func _calc_target_rotation() -> float:
 	var rot := _target_rot
 
 	var steering_dir:float
-	if _car_base.has_method("get_steering_direction"):
-		steering_dir = _car_base.get_steering_direction()
+	if _car_base.has_method("get_steering_input"):
+		steering_dir = _car_base.get_steering_input()
 	else:
 		var dotp: float = _car_body.linear_velocity.normalized().dot(_car_body.global_basis.x)
 		steering_dir = sign(dotp) if abs(dotp) > 0.001 else 0
