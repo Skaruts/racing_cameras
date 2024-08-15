@@ -119,18 +119,8 @@ func _on_ready() -> void:
 
 	switch_mode(chase_mode, false, true)
 
-
-
-func _get_configuration_warnings() -> PackedStringArray:
-	if follow_car != null and not _is_node_valid_car(follow_car):
-		return ["The provided car node is not a valid car. It must either be a PhysicsBody3D or define the method: \n    PhysicsBody3D get_car_physicsbody().\nThe chase camera also requires the car node to define the methods:\n    float get_throttle_input()\n    float get_steering_direction()"]
-	return []
-
-
-func _is_node_valid_car(node:Node) -> bool:
-	return (node is PhysicsBody3D or node.has_method("get_car_physicsbody")) \
-	   and node.has_method("get_throttle_input") \
-	   and node.has_method("get_steering_direction")
+	if not _car_base.has_method("get_steering_direction"):
+		push_warning("vehicle script has no method 'get_steering_direction' (this will cause some minor inconsistencies in the camera's behavior).")
 
 
 func _on_process(delta: float) -> void:
@@ -247,11 +237,13 @@ func _do_rotating_camera(_delta: float) -> void:
 func _calc_target_rotation() -> float:
 	var rot := _target_rot
 
-	var steering_dir:float = _car_base.get_steering_direction()
-
-	# TEST: using no car function
-	#var steering_dir = sign(_car_body.linear_velocity.normalized().dot(_car_body.global_basis.x))
-	#steering_dir *= _curr_heading # correct for this being inverted when reversing
+	var steering_dir:float
+	if _car_base.has_method("get_steering_direction"):
+		steering_dir = _car_base.get_steering_direction()
+	else:
+		var dotp: float = _car_body.linear_velocity.normalized().dot(_car_body.global_basis.x)
+		steering_dir = sign(dotp) if abs(dotp) > 0.001 else 0
+		steering_dir *= _new_heading # correct for this being inverted when reversing
 
 	if _new_heading < 0:  # reverse
 		if   steering_dir < 0: rot =  180
