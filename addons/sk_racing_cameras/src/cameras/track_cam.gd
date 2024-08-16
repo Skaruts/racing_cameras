@@ -30,8 +30,7 @@ extends RacingCamera
 ## [member emit_position_names] to [code]true[/code]. The names of the child
 ## nodes are the names that will appear on screen when you change positions.
 ## The names will be capitalized if they're not already; e.g., [code]hairpin_camera[/code]
-## will display as [code]Hairpin Camera[/code]. (The track camera is only a single camera,
-## but it mimics multiple cameras around the track.)
+## will display as [code]Hairpin Camera[/code].
 ##
 ## [br][br]
 ## The [RacingCameraManager] should be able to assign the default car to this
