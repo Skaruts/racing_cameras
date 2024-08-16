@@ -99,6 +99,7 @@ func previous_position(emit:=true) -> void:
 ##[br][br]
 ## If [param emit] is [code]true[/code], it will emit the [signal position_changed] signal.
 func switch_position(index:int, emit:=true, force_change:=false) -> void:
+	if _camera_positions.size() == 0: return
 	if index == _curr_position and not force_change: return
 	_curr_position = index
 	_cam.position = _camera_positions[_curr_position].pos
