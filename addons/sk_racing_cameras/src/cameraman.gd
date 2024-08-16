@@ -195,6 +195,9 @@ func set_car(new_car:Node3D, force:=false) -> void:
 		if cam._type != curr_cam._type: continue
 		if cam._car_base == new_car:
 			_switch_camera(i, false)
+			if curr_cam is RacingChaseCamera:
+				# try setting the same chase mode as the previous cam (and don't display name)
+				_cameras[_curr_idx].switch_mode(curr_cam._curr_mode, false)
 			return
 
 	# if we're here, the new car doesn't have the same camera as the old car,
