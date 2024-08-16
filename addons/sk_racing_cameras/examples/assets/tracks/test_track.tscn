@@ -7,24 +7,24 @@
 
 [node name="test_track_no_cams" parent="." instance=ExtResource("1_7wd38")]
 
-[node name="TrackCamera" type="Camera3D" parent="."]
+[node name="RacingTrackCamera" type="Camera3D" parent="."]
 script = ExtResource("2_dcswn")
 
-[node name="camera1" type="Camera3D" parent="TrackCamera"]
+[node name="camera1" type="Camera3D" parent="RacingTrackCamera"]
 transform = Transform3D(-1, 4.08562e-14, 8.74228e-08, 2.18136e-08, 0.96837, 0.249518, -8.46576e-08, 0.249518, -0.96837, 1.672, 2.61615, 23.065)
 
-[node name="camera2" type="Camera3D" parent="TrackCamera"]
+[node name="camera2" type="Camera3D" parent="RacingTrackCamera"]
 transform = Transform3D(1.2978e-07, -0.14332, 0.989676, 1.87941e-08, 0.989676, 0.14332, -1, 0, 1.31134e-07, 32.6586, 7.71479, 22.1239)
 
-[node name="camera3" type="Camera3D" parent="TrackCamera"]
+[node name="camera3" type="Camera3D" parent="RacingTrackCamera"]
 transform = Transform3D(-1, 3.90798e-14, 8.74228e-08, 2.18136e-08, 0.96837, 0.249518, -8.46576e-08, 0.249518, -0.96837, 1.672, 2.61615, -10.3795)
 
-[node name="camera4" type="Camera3D" parent="TrackCamera"]
+[node name="camera4" type="Camera3D" parent="RacingTrackCamera"]
 transform = Transform3D(1, 6.2648e-09, -1.74395e-07, 1.87941e-08, 0.989676, 0.14332, 1.73492e-07, -0.14332, 0.989676, 9.06178, 2.9867, 21.8801)
 current = true
 
-[node name="camera5" type="Camera3D" parent="TrackCamera"]
+[node name="camera5" type="Camera3D" parent="RacingTrackCamera"]
 transform = Transform3D(-1, 3.90798e-14, 8.74228e-08, 2.18136e-08, 0.96837, 0.249518, -8.46576e-08, 0.249518, -0.96837, -22.4493, 1.67361, 12.5353)
 
-[node name="camera6" type="Camera3D" parent="TrackCamera"]
+[node name="camera6" type="Camera3D" parent="RacingTrackCamera"]
 transform = Transform3D(-1, 3.90798e-14, 8.74228e-08, 2.18136e-08, 0.96837, 0.249518, -8.46576e-08, 0.249518, -0.96837, -22.4493, 1.67361, 4.38494)
