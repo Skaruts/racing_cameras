@@ -147,8 +147,8 @@ func _switch_camera(index:int, emit:=true, force_change:=false) -> void:
 func remove_camera(cam:RacingCamera) -> void:
 	if cam in _cameras:
 		_cameras.erase(cam)
-		if cam.has_signal("view_changed"):
-			cam.view_changed.disconnect(_cam_info_display.show_position_name)
+		if cam.has_signal("position_changed"):
+			cam.position_changed.disconnect(_cam_info_display.show_position_name)
 		elif cam.has_signal("mode_changed"):
 			cam.mode_changed.disconnect(_cam_info_display.show_position_name)
 
@@ -162,8 +162,8 @@ func add_camera(cam:RacingCamera) -> void:
 	if not cam in _cameras:
 		_cameras.append(cam)
 		cam.tree_exiting.connect(remove_camera.bind(cam))
-		if cam.has_signal("view_changed"):
-			cam.view_changed.connect(_cam_info_display.show_position_name)
+		if cam.has_signal("position_changed"):
+			cam.position_changed.connect(_cam_info_display.show_position_name)
 		elif cam.has_signal("mode_changed"):
 			cam.mode_changed.connect(_cam_info_display.show_position_name)
 
