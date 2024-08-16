@@ -24,6 +24,14 @@ extends RacingCamera
 ## nodes are [RacingCamera] types, but their usage for this is discouraged, as
 ## there may be some potential for weird things to happen.
 ##
+##[br][br]
+## By default the track camera omits the position names, as they are usually not
+## relevant, but the names can still be displayed by setting
+## [member emit_position_names] to [code]true[/code]. The names of the child
+## nodes are the names that will appear on screen when you change positions.
+## The names will be capitalized if they're not already; e.g., [code]hairpin_camera[/code]
+## will display as [code]Hairpin Camera[/code].
+##
 ## [br][br]
 ## The [RacingCameraManager] should be able to assign the default car to this
 ## camera at startup, so it may not be be necessary to set it manually. If
@@ -74,6 +82,7 @@ func _on_enter_tree() -> void:
 	camera_name = "Track Camera"
 	_type = "RacingTrackCamera"
 	_cam = Camera3D.new() # don't add as child before freeing the child cameras in '_ready'
+	# TODO: is this still an issue?
 
 
 func _on_ready() -> void:
@@ -165,6 +174,10 @@ func _init_positions() -> void:
 		var cp := CameraPosition.new(c.name.capitalize(), c.global_position)
 		_camera_positions.append(cp)
 		c.free()
+
+	if _camera_positions.size() == 0:
+		push_warning("no positions were specified for track camara")
+
 
 
 func _change_camera(_delta:float) -> void:

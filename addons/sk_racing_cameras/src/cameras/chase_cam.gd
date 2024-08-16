@@ -22,26 +22,25 @@ extends RacingCamera
 ## either by setting [member RacingCamera.follow_car] in the inspector, or using
 ## [method RacingCamera.set_car] through code.
 ##[br][br]
-## In order for this camera to work properly, it requires knowing some
-## information about the car, such as the direction of movement and the
-## direction that the car is turning to. Currently this means that the car node
-## should define the methods [code]get_throttle_input[/code] and
+## In order for this camera to work properly, it needs to know state of the
+## steering input (it will still work without this, but with some minor
+## inconsistencies). This means that the car node should define the method
 ## [code]get_steering_input[/code].
 ## [codeblock]
-## func get_throttle_input() -> float:
-##     return throttle_input
-##
 ## func get_steering_input() -> float:
-##     return steer_dir
+##     return steer_input
+##
+## func _process(delta: float) -> void:
+##    steer_input = Input.get_axis("turn_right", "turn_left")
 ## [/codeblock]
-## In both cases the return value should be a [param float] between [code]-1[/code]
+## The return value should be a [param float] between [code]-1[/code]
 ## and [code]1[/code], and the steering direction may have be corrected/negated
 ## to point in the right direction, depending on the implementation.
 ##[br][br]
-## The intended result is that the camera always spins around to the opposite
-## side that the car is turning to, such that it will more quickly provide
+## The intended result is that the camera always rotates around the opposite
+## side that the wheels are turning to, such that it will more quickly provide
 ## visibility in that direction (see the plugin examples). E.g., if the car is
-## turning left, the camera will spin to its right side, and vice-versa.
+## turning left, the camera will rotate by the right side, and vice-versa.
 
 
 ## Emitted whenever this camera changes mode.
@@ -62,7 +61,7 @@ var _curr_mode:ChaseMode
 @export var origin_offset      : float = 1      ## The vertical offset from the car's origin that the camera will look at.
 @export var cam_speed          : float = 0.2    ## How fast the camera moves toward or away from the car, when turning the mouse wheel.
 @export var min_height         : float = 1      ## The minimum camera height.
-@export var max_height         : float = 3      ## The maximum camera height.
+@export var max_height         : float = 4      ## The maximum camera height.
 @export var min_distance       : float = 2.5    ## The minimum distance to the car.
 @export var max_distance       : float = 10     ## The maximum distance to the car.
 @export var invert_mouse_wheel : bool = false   ## Invert mouse wheel movement.
@@ -245,17 +244,21 @@ func _calc_target_rotation() -> float:
 		steering_dir = sign(dotp) if abs(dotp) > 0.001 else 0
 		steering_dir *= _new_heading # correct for this being inverted when reversing
 
+		#var car_rot:float = -(last_rot - _car_body.global_rotation.y)  * _curr_heading
+		#var steering_dir: int = 0 if abs(car_rot) < 0.01 else sign(car_rot)
+		#logs.print(car_rot, steering_dir)
+
 	if _new_heading < 0:  # reverse
-		if   steering_dir < 0: rot =  180
-		elif steering_dir > 0: rot = -180
+		if   steering_dir > 0: rot =  180
+		elif steering_dir < 0: rot = -180
 		elif _piv_diff > 0:    rot =  180
 		elif _piv_diff < 0:    rot = -180
 	else:                 # forward
 		rot = 0
-		if steering_dir < 0:
+		if steering_dir > 0:
 			if _pivot.rotation_degrees.y < 0:
 				_pivot.rotation_degrees.y = 360 + _pivot.rotation_degrees.y
-		elif steering_dir > 0:
+		elif steering_dir < 0:
 			if _pivot.rotation_degrees.y > 0:
 				_pivot.rotation_degrees.y = -360 + _pivot.rotation_degrees.y
 		elif _piv_diff > 0:

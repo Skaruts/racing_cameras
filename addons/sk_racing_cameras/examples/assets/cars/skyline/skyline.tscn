@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/cockpit_cam.gd" id="2_x5nyy"]
 [ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/orbit_cam.gd" id="3_rq3yh"]
 [ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/chase_cam.gd" id="4_emk5j"]
-[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/car_cam.gd" id="5_ppgyr"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/mounted_cam.gd" id="5_ppgyr"]
 
 [node name="skyline" instance=ExtResource("1_b0v3i")]
 
@@ -18,21 +18,21 @@ script = ExtResource("4_emk5j")
 [node name="RacingOrbitCamera" type="Camera3D" parent="." index="5"]
 script = ExtResource("3_rq3yh")
 
-[node name="RacingCarCamera" type="Camera3D" parent="." index="6"]
+[node name="RacingMountedCamera" type="Camera3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 script = ExtResource("5_ppgyr")
 
-[node name="hood_view" type="Camera3D" parent="RacingCarCamera" index="0"]
+[node name="hood_view" type="Camera3D" parent="RacingMountedCamera" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00327802, -2.578)
 
-[node name="rear_view" type="Camera3D" parent="RacingCarCamera" index="1"]
+[node name="rear_view" type="Camera3D" parent="RacingMountedCamera" index="1"]
 transform = Transform3D(-1, -2.11465e-08, 8.48267e-08, 0, 0.970304, 0.241888, -8.74228e-08, 0.241888, -0.970304, 0, 0.00572205, -0.688)
 
-[node name="bumper_view" type="Camera3D" parent="RacingCarCamera" index="2"]
+[node name="bumper_view" type="Camera3D" parent="RacingMountedCamera" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.689278, -4.424)
 
-[node name="left_view" type="Camera3D" parent="RacingCarCamera" index="3"]
+[node name="left_view" type="Camera3D" parent="RacingMountedCamera" index="3"]
 transform = Transform3D(-4.39059e-08, -0.0666391, -0.997777, 2.91288e-09, 0.997777, -0.0666391, 1, -5.83226e-09, -4.36142e-08, -2.614, -0.263278, -1.932)
 
-[node name="right_view" type="Camera3D" parent="RacingCarCamera" index="4"]
+[node name="right_view" type="Camera3D" parent="RacingMountedCamera" index="4"]
 transform = Transform3D(-4.36143e-08, 0.0666391, 0.997777, 2.91288e-09, 0.997777, -0.0666391, -1, -1.33227e-14, -4.37115e-08, 2.614, -0.263278, -1.932)

@@ -9,7 +9,7 @@ func is_active() -> bool:
 	return _active
 
 func get_steering_input() -> float:
-	return -sign(steering_input)
+	return sign(steering_input)
 
 #func _get_car_physicsbody() -> RigidBody3D:
 	#return self
