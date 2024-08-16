@@ -36,10 +36,10 @@ extends Camera3D # must actually be a camera, so that they can be previewed in t
 ## they may have.
 
 
-
-
-
 const _shared := preload("res://addons/sk_racing_cameras/src/shared.gd")
+
+const _CONF_WARNING_FOLLOW_CAR_INVALID = "The provided car node is not a valid car. It must either be a PhysicsBody3D or define the method: \n    get_car_physicsbody() -> PhysicsBody3D"
+const _CONF_WARNING_CAR_NOT_FOUND = "Couldn't find a valid vehicle node in parent nodes.\nThe vehicle node must be either the scene root or the immediate parent of this node,\nand also either be a PhysicsBody3D subclass or define the method:\n    get_car_physicsbody() -> PhysicsBody3D"
 
 
 @warning_ignore("unused_private_class_variable")
@@ -120,7 +120,9 @@ func _on_set_car() -> void:                          pass
 
 func _get_configuration_warnings() -> PackedStringArray:
 	if follow_car and not _is_node_valid_car(follow_car):
-		return ["The provided car node is not a valid car. It must either be a PhysicsBody3D or define the method: \n    get_car_physicsbody() -> PhysicsBody3D"]
+		return [_CONF_WARNING_FOLLOW_CAR_INVALID]
+	if not _find_valid_car_node():
+		return [_CONF_WARNING_CAR_NOT_FOUND]
 	return []
 
 

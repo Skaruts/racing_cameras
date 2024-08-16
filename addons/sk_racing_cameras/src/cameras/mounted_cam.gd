@@ -38,6 +38,8 @@ extends RacingCamera
 ## Emitted whenever this camera changes position.
 signal position_changed(position_name: String)
 
+const _CONF_WARNING_NO_CHILD_NODES = "The mounted-camera requires child nodes marking the camera positions around the vehicle."
+
 
 var _camera_positions:Array[CameraPosition]
 var _curr_position:int
@@ -71,6 +73,13 @@ func _init_positions() -> void:
 
 	if _camera_positions.size() == 0:
 		push_warning("no positions were specified for mounted camera")
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var res := super()
+	if not res and get_child_count() == 0:
+		res = [_CONF_WARNING_NO_CHILD_NODES]
+	return res
 
 
 func _on_unhandled_input(event: InputEvent) -> void:

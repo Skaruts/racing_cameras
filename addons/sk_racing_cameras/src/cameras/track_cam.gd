@@ -46,6 +46,8 @@ extends RacingCamera
 ## Emitted whenever this camera changes position. See [method switch_position].
 signal position_changed(position_name: String)
 
+const _CONF_WARNING_NO_CHILD_NODES = "The track-camera requires child nodes marking the camera positions around the race-track."
+
 var _camera_positions:Array[CameraPosition]
 var _curr_position:int
 
@@ -93,6 +95,14 @@ func _on_ready() -> void:
 		_internal_switch_position(0, false)
 
 
+func _get_configuration_warnings() -> PackedStringArray:
+	if follow_car and not _is_node_valid_car(follow_car):
+		return [_CONF_WARNING_FOLLOW_CAR_INVALID]
+	if get_child_count() == 0:
+		return [_CONF_WARNING_NO_CHILD_NODES]
+	return []
+
+
 func _on_process(delta: float) -> void:
 	if not _target: return
 	if _pos_change_timer > 0:
@@ -122,6 +132,7 @@ func _on_set_car() -> void:
 func _on_set_active() -> void:
 	_cam.current = _active
 	set_process_unhandled_input(not auto_switch and _active)
+
 
 
 
@@ -155,8 +166,6 @@ func switch_position(index:int, emit:=false, force_change:=false) -> void:
 
 
 
-
-
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
 #		private
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
@@ -177,7 +186,6 @@ func _init_positions() -> void:
 
 	if _camera_positions.size() == 0:
 		push_warning("no positions were specified for track camara")
-
 
 
 func _change_camera(_delta:float) -> void:
