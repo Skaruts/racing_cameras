@@ -31,6 +31,8 @@ This plugin will autoload a camera manager singleton that should automatically m
 
 The camera manager also allows to easily switch between the available cameras using the `C` key, by default, or user defined input actions if they exist (see [Input Actions](#input-actions) below). The same is true for cameras that support multiple positions or modes, using the `V` key by default.
 
+The singleton also shows the camera and position names on the screen whenever you change camera or camera position/mode.
+
 The camera nodes will attempt to auto-detect your vehicle node when they enter the scene tree. For that end your vehicle node must satisfy two conditions:
 - it must be the scene root or the immediate parent of the camera node
 - it must either be one of the `PhysicsBody3D` subtypes, or it must define a `get_car_physicsbody -> PhysicsBody3D` method, which returns the respective physics node of the vehicle. (This is because not all vehicle scenes may have the actual vehicle body as the root node.)
@@ -76,6 +78,8 @@ This is the base class for all cameras and shouldn't be used directly, as it doe
 With this camera you can specify several positions around your vehicle, that you can then switch between (hood view, rear view, side view -- a cockpit view can also be defined with this camera, but it will be fixed).
 
 The positions are specified using child nodes of the `RacingMountedCamera` node. Any `Node3D` type will do (except `RacingCamera` types), but it's preferable to use `Camera3D`, as they can be previewed in the editor, for accurate positioning.
+
+The names of the child nodes are the names that will appear on screen when you change positions. The names will be capitalized if they're not already; e.g., `hood_view` will appear as `Hood View`.
 
 You can then use the `V` key (or the input actions) to cycle through the positions.
 
@@ -137,5 +141,6 @@ Much like the `RacingMountedCamera`, the positions are specified using child nod
 
 ###### Note: using `RacingCameras` as position markers is highly discouraged, as it's completely untested and weird things may happen.
 
+The names of the positions can optionally be shown on the screen. Much like the mounted camera, the position names are the child node names, capitalized. E.g., `hairpin_camera` will display as `Hairpin Camera`. (The track camera is only a single camera, but it mimics multiple cameras around the track.)
 
 

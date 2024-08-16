@@ -24,6 +24,15 @@ extends RacingCamera
 ## nodes are [RacingCamera] types, but their usage for this is discouraged, as
 ## there may be some potential for weird things to happen.
 ##
+##[br][br]
+## By default the track camera omits the position names, as they are usually not
+## relevant, but the names can still be displayed by setting
+## [member emit_position_names] to [code]true[/code]. The names of the child
+## nodes are the names that will appear on screen when you change positions.
+## The names will be capitalized if they're not already; e.g., [code]hairpin_camera[/code]
+## will display as [code]Hairpin Camera[/code]. (The track camera is only a single camera,
+## but it mimics multiple cameras around the track.)
+##
 ## [br][br]
 ## The [RacingCameraManager] should be able to assign the default car to this
 ## camera at startup, so it may not be be necessary to set it manually. If
