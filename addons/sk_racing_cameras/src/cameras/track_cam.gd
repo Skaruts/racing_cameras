@@ -74,6 +74,7 @@ func _on_enter_tree() -> void:
 	camera_name = "Track Camera"
 	_type = "RacingTrackCamera"
 	_cam = Camera3D.new() # don't add as child before freeing the child cameras in '_ready'
+	# TODO: is this still an issue?
 
 
 func _on_ready() -> void:
@@ -165,6 +166,10 @@ func _init_positions() -> void:
 		var cp := CameraPosition.new(c.name.capitalize(), c.global_position)
 		_camera_positions.append(cp)
 		c.free()
+
+	if _camera_positions.size() == 0:
+		push_warning("no positions were specified for track camara")
+
 
 
 func _change_camera(_delta:float) -> void:

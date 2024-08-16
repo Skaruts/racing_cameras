@@ -42,23 +42,27 @@ func _on_enter_tree() -> void:
 	_init_car_from_owner()
 
 
-
 func _on_ready() -> void:
-	#await owner.ready
+	_init_positions()
 
-	for c:Node3D in get_children():
-		if c == _cam: continue
-		var cp := CameraPosition.new(c.name.capitalize(), _car_body.to_local(c.global_position), c.rotation)
-		_camera_positions.append(cp)
-		c.free()
-
-	_cam = Camera3D.new() # don't add as child before freeing the child cameras in '_ready'
+	_cam = Camera3D.new()
 	add_child(_cam)
 
 	# if this node isn't at the correct position, fix it (do this AFTER initializing the camera positions)
 	global_position = _car_body.global_position
 
 	switch_position(_curr_position, false, true)
+
+
+func _init_positions() -> void:
+	for c:Node3D in get_children():
+		if c == _cam: continue
+		var cp := CameraPosition.new(c.name.capitalize(), _car_body.to_local(c.global_position), c.rotation)
+		_camera_positions.append(cp)
+		c.free()
+
+	if _camera_positions.size() == 0:
+		push_warning("no positions were specified for on-car camara")
 
 
 func _on_unhandled_input(event: InputEvent) -> void:
@@ -68,7 +72,6 @@ func _on_unhandled_input(event: InputEvent) -> void:
 		next_position()
 	elif _shared.prev_cam_pos_key_pressed(event):
 		previous_position()
-
 
 
 func _on_process(_delta: float) -> void:
