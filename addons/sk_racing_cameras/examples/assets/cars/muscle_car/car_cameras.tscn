@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvejlhg1wej8"]
 
-[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/car_cam.gd" id="1_uoapj"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/mounted_cam.gd" id="1_uoapj"]
 
-[node name="RacingCarCamera" type="Camera3D"]
+[node name="RacingMountedCamera" type="Camera3D"]
 script = ExtResource("1_uoapj")
 
 [node name="hood_view" type="Camera3D" parent="."]

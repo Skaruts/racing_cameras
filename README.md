@@ -15,7 +15,7 @@ Quick video demonstration:
 - **RacingChaseCamera** - the regular racing game camera that chases the vehicle and rotates around it to face the direction of movement. Can be moved closer and away from the vehicle with the mouse wheel.
 - **RacingOrbitCamera** - orbits around the vehicle independant of the vehicle's rotation (optionally). It's controlled with the mouse to orbit, and `mouse wheel` to zoom in and out.
 - **RacingCockpitCamera** - the interior cockpit camera. Can be controlled with the mouse to look around freely.
-- **RacingCarCamera** - allows cycling through several user-defined perspectives around the car.
+- **RacingMountedCamera** - allows cycling through several user-defined perspectives around the car.
 - **RacingTrackCamera** - automatically follows the player car by changing between user-defined positions around the race-track.
 
 ###### Note: mouse controls only work when the mouse is captured. The plugin already includes this funtionality, just by `left-clicking` to capture the mouse and `Escape` to release the mouse.
@@ -71,11 +71,11 @@ This is the base class for all cameras and shouldn't be used directly, as it doe
 
 
 
-- ### RacingCarCamera
+- ### RacingMountedCamera
 
 With this camera you can specify several positions around your vehicle, that you can then switch between (hood view, rear view, side view -- a cockpit view can also be defined with this camera, but it will be fixed).
 
-The positions are specified using child nodes of the `RacingCarCamera` node. Any `Node3D` type will do (except `RacingCamera` types), but it's preferable to use `Camera3D`, as they can be previewed in the editor, for accurate positioning.
+The positions are specified using child nodes of the `RacingMountedCamera` node. Any `Node3D` type will do (except `RacingCamera` types), but it's preferable to use `Camera3D`, as they can be previewed in the editor, for accurate positioning.
 
 You can then use the `V` key (or the input actions) to cycle through the positions.
 
@@ -133,7 +133,7 @@ With this camera you can specify any amount of positions all around the race-tra
 
 You can optionally have manual control, in which case you can use the `V` key (or the input actions) to switch camera position.
 
-Much like the `RacingCarCamera`, the positions are specified using child nodes of any `Node3D` type (except `RacingCamera` types), but it's preferable to use `Camera3D`, as they can be previewed in the editor.
+Much like the `RacingMountedCamera`, the positions are specified using child nodes of any `Node3D` type (except `RacingCamera` types), but it's preferable to use `Camera3D`, as they can be previewed in the editor.
 
 ###### Note: using `RacingCameras` as position markers is highly discouraged, as it's completely untested and weird things may happen.
 

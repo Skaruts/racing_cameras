@@ -1,23 +1,31 @@
 @tool
-class_name RacingCarCamera
+class_name RacingMountedCamera
 extends RacingCamera
 
-## An on-car camera, that can cycle through multiple user-defined positions
+## A camera that is mounted on the vehicle, which can cycle through multiple user-defined positions
 ## (hood view, side view, etc).
 ## [br][br]
-## Must be child of the car node, and its positions must be marked by child
+## Must be child of the vehicle node, and its positions must be marked by child
 ## nodes (use cameras, so you can preview them).
 ##
-## An on-car camera, that can cycle through multiple user-defined positions around
-## the car.
+## A camera that is mounted on the vehicle, which can cycle through multiple
+## user-defined positions around (or in) the vehicle.
+##
 ##[br][br]
 ## The positions must be marked by child nodes of this camera. The nodes can be
 ## of any [Node3D] type (except [RacingCamera]), but it's more convenient to
 ## use [Camera3D], as they can be previewed in the editor.
+##
+##[br][br]
+## The names of the child nodes are the names that will appear on screen when
+## you change positions. The names will be capitalized if they're not already;
+## e.g., `hood_view` will appear as `Hood View`.
+##
 ##[br][br]
 ## [color=white][b]Note:[/b][/color] using subclasses of [RacingCamera] as
 ## position markers is discouraged, as it's untested, and it may result in
 ## weird things happening.
+##
 ##[br][br]
 ## [color=white][b]Note:[/b][/color] This camera must be a child of the car node.
 ## If the car node is the scene root or the immediate parent, then the camera
@@ -37,7 +45,7 @@ var _curr_position:int
 
 
 func _on_enter_tree() -> void:
-	_type = "RacingCarCamera"
+	_type = "RacingMountedCamera"
 	camera_name = "On-Car Camera"
 	_init_car_from_owner()
 
@@ -62,7 +70,7 @@ func _init_positions() -> void:
 		c.free()
 
 	if _camera_positions.size() == 0:
-		push_warning("no positions were specified for on-car camara")
+		push_warning("no positions were specified for mounted camera")
 
 
 func _on_unhandled_input(event: InputEvent) -> void:
