@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddng4imjmc6eh"]
+[gd_scene load_steps=11 format=3 uid="uid://ddng4imjmc6eh"]
 
 [ext_resource type="PackedScene" uid="uid://bme4c1oujo4tj" path="res://addons/sk_racing_cameras/examples/assets/tracks/test_track_no_cams.tscn" id="2_up0qe"]
 [ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/track_cam.gd" id="3_at4uc"]
 [ext_resource type="PackedScene" uid="uid://cxhcoihrvm6eu" path="res://addons/sk_racing_cameras/examples/assets/cars/muscle_car/muscle_car_no_cams.tscn" id="3_sp55k"]
 [ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/orbit_cam.gd" id="4_55n42"]
 [ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/cockpit_cam.gd" id="5_8cwqv"]
+[ext_resource type="Script" path="res://addons/sk_racing_cameras/src/cameras/mounted_cam.gd" id="6_6gerp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_823no"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -65,6 +66,18 @@ script = ExtResource("4_55n42")
 [node name="RacingCockpitCamera" type="Camera3D" parent="cars/muscle_car_nc"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415779, 1.10073, 0.220638)
 script = ExtResource("5_8cwqv")
+
+[node name="RacingMountedCamera" type="Camera3D" parent="cars/muscle_car_nc"]
+script = ExtResource("6_6gerp")
+
+[node name="hood_cam" type="Camera3D" parent="cars/muscle_car_nc/RacingMountedCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16785, -0.40727)
+
+[node name="side_cam" type="Camera3D" parent="cars/muscle_car_nc/RacingMountedCamera"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.17337, 0.707668, 0.154444)
+
+[node name="rear_cam" type="Camera3D" parent="cars/muscle_car_nc/RacingMountedCamera"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.22073, 1.05534)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 1
