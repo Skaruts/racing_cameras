@@ -71,7 +71,7 @@ script = ExtResource("5_8cwqv")
 script = ExtResource("6_6gerp")
 
 [node name="hood_cam" type="Camera3D" parent="cars/muscle_car_nc/RacingMountedCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16785, -0.40727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16785, -0.444242)
 
 [node name="side_cam" type="Camera3D" parent="cars/muscle_car_nc/RacingMountedCamera"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.17337, 0.707668, 0.154444)
