@@ -120,7 +120,7 @@ Depending on the implementation, you may have to return an inverted steering inp
 
 - ### RacingOrbitCamera
 
-With this camera you can orbit around the car to inspect it from any direction, using the mouse, and you can also use the `mouse wheel` to move the camera closer or away from the car.
+With this camera you can orbit around the car to inspect it from any direction, using the mouse, and you can also use the `mouse wheel` to move the camera closer or away from the car. Holding `Ctrl` or `Shift` will slow down or speed up the camera movement, respectively.
 
 This camera also comes with some settings that are tweakable in the inspector.
 

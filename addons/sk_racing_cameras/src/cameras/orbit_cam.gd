@@ -7,7 +7,11 @@ extends RacingCamera
 ##[br][br]
 ## Must be child of the car node.
 ##
-## A camera that orbits around the car, controlled with the mouse.
+## A camera that orbits around the car, controlled with the mouse. The mouse wheel
+## can also be used to move the camera closer or away from the car. Holding
+## [code]Ctrl[/code] or [code]Shift[/code] will slow down or speed up the
+## camera movement, respectively.
+##
 ##[br][br]
 ## [color=white][b]Note:[/b][/color] the mouse controls will only work if the
 ## mouse is captured. The mouse can be captured by left-clicking, or uncaptured
